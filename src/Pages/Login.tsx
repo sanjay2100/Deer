@@ -4,12 +4,15 @@ import PrimaryButton from '../Components/Buttons';
 import { RegisterType } from '../Types/authtypes';
 import { LoginApi } from '../Api/AuthApi';
 // import registerImage from '../assets/SVG/register.svg'
-import { Grid, Stack, Typography } from '@mui/material';
+import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import {useNavigate} from "react-router-dom"
 type Props = {}
 
 const Login: React.FC = ({ }: Props) => {
     const [PostData, setPostData] = useState<RegisterType>({ username: '', password: '' })
+
+    const Nav=useNavigate()
 
     const dispatch = useDispatch()
 
@@ -20,115 +23,120 @@ const Login: React.FC = ({ }: Props) => {
     const handleSubmit = () => {
         LoginApi(PostData, dispatch)
     }
+
+    const buttonStyle: object = {
+        background: "linear-gradient(120deg,#553eed,#5e5b70)",
+        borderRadius: 10,
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        flexDirection: 'column',
+        gap: 20,
+        padding: 10
+    }
+
     return (
-        <Grid container height='100vh' sx={{ overflow: 'hidden' }}>
-            <Grid height='100%' item xl={6} lg={6} md={6} sx={{ background: 'linear-gradient(to left,#fff,dodgerblue)' }}>
-                <h2>Image</h2>
-
-            </Grid>
-            <Grid item xl={6} lg={6} md={6} p={5} height="100%" sx={{ backgroundColor: '#fff' }}>
-                <Grid container height="100%">
-                    <Stack direction="column" justifyContent="space-between" height="100%">
-                        <Grid container>
-                            <Grid item xl={6} lg={6}>
-                                <Typography variant="h4" sx={{ fontSize: '18px', fontWeight: 550 }}>Login</Typography>
-                                <h4 className="text-sm col-span-6 text-base font-sans text-gray-500">Register with your data to proceed</h4>
-                            </Grid>
-
-                            <Grid item xl={6} lg={6}>
-                                <Stack direction="row" justifyContent="flex-end" alignItems="flex-end" gap={1}>
-                                    <Typography variant="h4" sx={{ fontSize: '16px', fontWeight: 500 }}>Didn't have account?</Typography>
-                                    <Typography variant="h5" sx={{ fontSize: '16px', fontWeight: 500, color: "#78acfa" }}>Login</Typography>
-                                </Stack>
-                            </Grid>
-                        </Grid>
-
-                        <Grid container justifyContent="flex-start" spacing={3}>
-                            <Grid item xl={12} lg={12} md={8} sx={{ backgroundColor: 'whitesmoke', padding: 3, borderRadius: 3 }}>
-                                <Grid container spacing={3}>
-                                    <Grid item xl={12} lg={12} md={12}>
-                                        <Typography variant="h4" sx={{ fontSize: '16px', fontWeight: 540, mb: 1 }}>Username</Typography>
-                                        <TextField
-                                            id="outlined-basic"
-                                            variant="outlined"
-                                            size="small"
-                                            sx={{
-                                                borderRadius: '20px',
-                                                '& .MuiOutlinedInput-root': {
-                                                    '& input': {
-                                                        backgroundColor: '#e4ebf5',
-                                                        borderRadius: '8px',
-                                                    },
-                                                    '& fieldset': {
-                                                        border: '1px solid #d9dadb',
-                                                        borderRadius: '8px', // Ensures no border when focused
-                                                    },
-                                                    '&:hover fieldset': {
-                                                        border: '1px solid #d9dadb',
-                                                        borderRadius: '8px', // Ensures no border on hover
-                                                    },
-                                                    '&.Mui-focused fieldset': {
-                                                        border: '1px solid #d9dadb',
-                                                        borderRadius: '8px', // Ensures no border when focused
-                                                    },
-                                                },
-                                            }}
-                                            fullWidth
-                                            onChange={(e) => handleDataChange("username", e.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xl={12} lg={12} md={12}>
-                                        <Typography sx={{ fontSize: '16px', fontWeight: 540, mb: 1 }}>Password</Typography>
-                                        <TextField
-                                            id="outlined-basic"
-                                            type="password"
-                                            variant="outlined"
-                                            size="small"
-                                            sx={{
-                                                borderRadius: '20px',
-                                                '& .MuiOutlinedInput-root': {
-                                                    '& input': {
-                                                        backgroundColor: '#e4ebf5',
-                                                        borderRadius: '8px',
-                                                    },
-                                                    '& fieldset': {
-                                                        border: '1px solid #d9dadb',
-                                                        borderRadius: '8px', // Ensures no border when focused
-                                                    },
-                                                    '&:hover fieldset': {
-                                                        border: '1px solid #d9dadb',
-                                                        borderRadius: '8px', // Ensures no border on hover
-                                                    },
-                                                    '&.Mui-focused fieldset': {
-                                                        border: '1px solid #d9dadb',
-                                                        borderRadius: '8px', // Ensures no border when focused
-                                                    },
-                                                },
-                                            }}
-                                            fullWidth
-                                            onChange={(e) => handleDataChange("password", e.target.value)}
-                                        />
-                                    </Grid>
-                                        <Grid item xl={12} lg={12} mt={2}>
-                                            <PrimaryButton value="SUBMIT" fullWidth={true} clickEvent={handleSubmit} />
-                                        </Grid>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-
-                        <Grid container>
-                            <Grid item xl={12}>
-                                <Stack direction="row" gap={5}>
-                                    <Typography variant="body1" sx={{ fontSize: '12px', mb: 1, color: 'grey' }}>Terms and Conditions</Typography>
-                                    <Typography variant="body1" sx={{ fontSize: '12px', mb: 1, color: 'grey' }}>Privacy policy</Typography>
-                                    <Typography variant="body1" sx={{ fontSize: '12px', mb: 1, color: 'grey' }}>About us</Typography>
-                                </Stack>
-                            </Grid>
-                        </Grid>
-                    </Stack>
+        <Grid container sx={{ height: '100vh' }}>
+            <Grid item xl={7} lg={7} md={7} sm={0} xs={0} sx={{ height: '100%' }}>
+                <Grid container p={8} sx={{ height: '100%' }}>
+                    <Grid item xl={12} lg={12} md={12} sx={{ height: '100%' }}>
+                        <Box sx={buttonStyle}>
+                            <Stack justifyContent="flex-start">
+                                
+                                <Typography variant='h2' color="#fff" sx={{ fontWeight: 700 }}>
+                                    Shop Smart,
+                                </Typography>
+                                <Typography variant='h1' color="#fff" sx={{ fontWeight: 700 }}>
+                                    Shop Secure.
+                                </Typography>
+                            </Stack>
+                        </Box>
+                    </Grid>
                 </Grid>
             </Grid>
-
+            <Grid item xl={5} lg={5} md={5} sm={12} xs={12} sx={{height:'100%'}}>
+                <Grid container sx={{ padding: 10,height:'100%' }}>
+                    <Grid item xl={12} lg={12} md={12}>
+                        <Stack sx={{height:'100%'}} justifyContent="center">
+                            <Stack direction="column" justifyContent="center" alignItems="center" gap={1}>
+                                <Typography variant='h1' sx={{ fontSize: '50px', fontWeight: 650 ,color:"#6f46eb"}}>EZCart</Typography>
+                                <Typography variant='body1' color="GrayText" fontSize="25px">Please login to your account</Typography>
+                            </Stack>
+                            <Stack gap={5} mt={3}>
+                                <TextField
+                                    fullWidth
+                                    id="outlined-basic"
+                                    label="User Name"
+                                    variant="outlined" 
+                                    size='medium'
+                                    value={PostData.username}
+                                    onChange={(e)=>handleDataChange("username",e.target.value)}
+                                    sx={{
+                                        borderRadius: '20px',
+                                        
+                                        '& .MuiOutlinedInput-root': {
+                                            '& input': {
+                                                backgroundColor: 'whitesmoke',
+                                                borderRadius: '8px',
+                                            },
+                                            '& fieldset': {
+                                                border: 'none',
+                                                borderRadius: '8px', // Ensures no border when focused
+                                            },
+                                            '&:hover fieldset': {
+                                                border: 'none',
+                                                borderRadius: '8px', // Ensures no border on hover
+                                            },
+                                            '&.Mui-focused fieldset': {
+                                                border: 'none',
+                                                borderRadius: '8px', // Ensures no border when focused
+                                            },
+                                        },
+                                    }}
+                                    />
+                                    <TextField
+                                    fullWidth
+                                    id="outlined-basic"
+                                    label="Password"
+                                    variant="outlined"
+                                    value={PostData.password}
+                                    onChange={(e)=>handleDataChange("password",e.target.value)}
+                                    sx={{
+                                        borderRadius: '20px',
+                                        '& .MuiOutlinedInput-root': {
+                                            '& input': {
+                                                backgroundColor: 'whitesmoke',
+                                                borderRadius: '8px',
+                                            },
+                                            '& fieldset': {
+                                                border: 'none',
+                                                borderRadius: '8px', // Ensures no border when focused
+                                            },
+                                            '&:hover fieldset': {
+                                                border: 'none',
+                                                borderRadius: '8px', // Ensures no border on hover
+                                            },
+                                            '&.Mui-focused fieldset': {
+                                                border: 'none',
+                                                borderRadius: '8px', // Ensures no border when focused
+                                            },
+                                        },
+                                    }}
+                                    />
+                                    <Stack direction="row" justifyContent="flex-end">
+                                        <Button>Forgot password?</Button>
+                                    </Stack>
+                                    <PrimaryButton value='LOGIN' fullWidth={true} clickEvent={handleSubmit}/>
+                            </Stack>
+                            <Stack direction="row" alignItems='center' mt={2}>
+                                <Typography variant='body1' color="GrayText" fontSize="20px">Don't have an account?</Typography>
+                                <Button onClick={()=>Nav("/register")}>Sign Up</Button>
+                            </Stack>
+                        </Stack>
+                    </Grid>
+                </Grid>
+            </Grid>
         </Grid>
     )
 }

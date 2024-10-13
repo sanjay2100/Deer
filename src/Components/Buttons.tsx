@@ -11,9 +11,9 @@ const PrimaryButton:React.FC<ButtonInterface>=(props)=> {
   return (
     <Button 
     variant='contained' 
-    sx={{borderRadius:'10px',padding:1,fontWeight:650}} 
+    sx={{borderRadius:'10px',padding:1.5,fontWeight:650,backgroundColor:"#553eed"}} 
     fullWidth={props.fullWidth}
-    color='primary'
+  
     onClick={props.clickEvent}  
     >{props.value}</Button>
   )
