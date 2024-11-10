@@ -1,0 +1,36 @@
+/* General Styles for the Grid */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .grid-item {
+    opacity: 0;
+    transform: translateX(50px); /* Initial state */
+    transition: all 0.5s ease-in-out;
+  }
+  
+  /* Transition when entering a page */
+  .fade-enter {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s ease-in-out;
+  }
+  

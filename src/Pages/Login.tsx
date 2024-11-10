@@ -7,10 +7,18 @@ import { LoginApi } from '../Api/AuthApi';
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import {useNavigate} from "react-router-dom"
+import BackdropLoader from '../Components/Loader';
+import AlertSnackBar from '../Components/Alert';
 type Props = {}
 
 const Login: React.FC = ({ }: Props) => {
     const [PostData, setPostData] = useState<RegisterType>({ username: '', password: '' })
+    const [loading, setLoading] = useState<boolean>(false)
+    const [AlertMessage, setAlertMessage] =useState<string>("")
+    const [AlertSeverity, setAlertSeverity] = useState<any>("")
+    const [alertOpen, setAlertOpen] = useState<boolean>(false)
+
+    
 
     const Nav=useNavigate()
 
@@ -20,8 +28,18 @@ const Login: React.FC = ({ }: Props) => {
         setPostData({ ...PostData, [name]: value })
     }
 
+    const handleAlertOpen = (message: string, severity: any) => {
+        setAlertMessage(message)
+        setAlertSeverity(severity)
+        setAlertOpen(true)
+    }
+
+    const handleAlertClose = () => {
+        setAlertOpen(false)
+    }
+
     const handleSubmit = () => {
-        LoginApi(PostData, dispatch)
+        LoginApi(PostData, dispatch,handleAlertOpen,setLoading,Nav)
     }
 
     const buttonStyle: object = {
@@ -36,11 +54,15 @@ const Login: React.FC = ({ }: Props) => {
         padding: 10
     }
 
+
+
     return (
         <Grid container sx={{ height: '100vh' }}>
-            <Grid item xl={7} lg={7} md={7} sm={0} xs={0} sx={{ height: '100%' }}>
+            <AlertSnackBar open={alertOpen} message={AlertMessage} severity={AlertSeverity} handleClose={handleAlertClose}/>
+            <BackdropLoader open={loading} />
+            <Grid item xl={7} lg={7} md={7} sm={0} xs={0} sx={{ height: '100%',display:{sm:'none',xs:'none',md:'flex',lg:'flex',xl:'flex'}}}>
                 <Grid container p={8} sx={{ height: '100%' }}>
-                    <Grid item xl={12} lg={12} md={12} sx={{ height: '100%' }}>
+                    <Grid item xl={12} lg={12} md={12} sm={0} xs={0} sx={{ height: '100%' }}>
                         <Box sx={buttonStyle}>
                             <Stack justifyContent="flex-start">
                                 
@@ -57,7 +79,7 @@ const Login: React.FC = ({ }: Props) => {
             </Grid>
             <Grid item xl={5} lg={5} md={5} sm={12} xs={12} sx={{height:'100%'}}>
                 <Grid container sx={{ padding: 10,height:'100%' }}>
-                    <Grid item xl={12} lg={12} md={12}>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                         <Stack sx={{height:'100%'}} justifyContent="center">
                             <Stack direction="column" justifyContent="center" alignItems="center" gap={1}>
                                 <Typography variant='h1' sx={{ fontSize: '50px', fontWeight: 650 ,color:"#6f46eb"}}>EZCart</Typography>

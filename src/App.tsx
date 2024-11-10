@@ -5,6 +5,9 @@ import Login from "./Pages/Login"
 import Home from "./Pages/Home"
 import { useEffect } from "react"
 import { TestRoute } from "./Api/AuthApi"
+import Dashboard from "./Pages/Dashboard"
+import VendorRegistration from "./Pages/VendorRegistration"
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function App() {
 
@@ -14,11 +17,31 @@ function App() {
 
   return (
     <BrowserRouter>
+            <TransitionGroup>
+
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={
+          <CSSTransition
+          timeout={1000}
+          classNames="fade"
+          key="page1">
+          <Login />
+          </CSSTransition>
+        } />
+        <Route path="/register" element={
+          <CSSTransition
+          timeout={1000}
+          classNames="fade"
+          key="page1"
+        >
+          <Register />
+          </CSSTransition>
+        } />
         <Route path="/home" element={<Home/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="vendor-registration" element={<VendorRegistration/>}/>
       </Routes>
+      </TransitionGroup>
 
     </BrowserRouter>
   )

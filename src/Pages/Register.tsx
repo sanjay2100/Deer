@@ -8,8 +8,6 @@ import {  Box, Button, Grid, Stack, Typography } from '@mui/material';
 import BackdropLoader from '../Components/Loader';
 import AlertSnackBar from '../Components/Alert';
 import {useNavigate} from "react-router-dom"
-
-
 type Props = {}
 
 const Login: React.FC = ({ }: Props) => {
@@ -22,7 +20,7 @@ const Login: React.FC = ({ }: Props) => {
     const Nav=useNavigate()
 
     const buttonStyle: object = {
-        background: "linear-gradient(45deg,#553eed,#5e5b70)",
+        background: "linear-gradient(45deg,#553eed,#f75423)",
         borderRadius: 10,
         height: '100%',
         display: 'flex',
@@ -30,7 +28,7 @@ const Login: React.FC = ({ }: Props) => {
         alignItems: 'flex-start',
         flexDirection: 'column',
         gap: 20,
-        padding: 10
+        padding: 10,
     }
 
     const handleAlertClose = () => {
@@ -48,16 +46,18 @@ const Login: React.FC = ({ }: Props) => {
     }
 
     const handleSubmit = () => {
-        RegisterApi(PostData,setLoading,handleAlertOpen)
+        RegisterApi(PostData,setLoading,handleAlertOpen,Nav)
     }
     return (
-        <Grid container sx={{ height: '100vh' }}>
+        <Grid className="grid-container" container sx={{ height: '100vh' }}>
             <BackdropLoader open={loading}/>
             <AlertSnackBar open={alertOpen} severity={AlertSeverity} message={AlertMessage} handleClose={handleAlertClose}/>
-            <Grid item xl={7} lg={7} md={7} sm={0} xs={0} sx={{ height: '100%' }}>
+            
+           
+            <Grid className="grid-item"  item xl={7} lg={7} md={7} sm={0} xs={0} sx={{ height: '100%' }}>
                 <Grid container p={8} sx={{ height: '100%' }}>
                     <Grid item xl={12} lg={12} md={12} sx={{ height: '100%' }}>
-                        <Box sx={buttonStyle}>
+                        <Box className='left-div' sx={buttonStyle}>
                             <Stack justifyContent="flex-start">
                                 
                                 <Typography variant='h2' color="#fff" sx={{ fontWeight: 700 }}>
@@ -71,7 +71,7 @@ const Login: React.FC = ({ }: Props) => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xl={5} lg={5} md={5} sm={12} xs={12} sx={{height:'100%'}}>
+            <Grid className="grid-item" item xl={5} lg={5} md={5} sm={12} xs={12} sx={{height:'100%'}}>
                 <Grid container sx={{ padding: 10,height:'100%' }}>
                     <Grid item xl={12} lg={12} md={12}>
                         <Stack sx={{height:'100%'}} justifyContent="center">
@@ -140,10 +140,8 @@ const Login: React.FC = ({ }: Props) => {
                                         },
                                     }}
                                     />
-                                    <Stack direction="row" justifyContent="flex-end">
-                                        <Button>Forgot password?</Button>
-                                    </Stack>
-                                    <PrimaryButton value='LOGIN' fullWidth={true} clickEvent={handleSubmit}/>
+                                    
+                                    <PrimaryButton value='Register' fullWidth={true} clickEvent={handleSubmit}/>
                             </Stack>
                             <Stack direction="row" alignItems='center' mt={2}>
                                 <Typography variant='body1' color="GrayText" fontSize="20px">Already have an account?</Typography>

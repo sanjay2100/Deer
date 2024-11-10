@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AlertFuntionType, RegisterType } from "../Types/authtypes";
+import {  RegisterType } from "../Types/authtypes";
 import { pending,success,failure } from "../Store/Slice";
 import React from "react";
 
@@ -21,13 +21,16 @@ export const TestRoute=async():Promise<void>=>{
 }
 
 
-export const RegisterApi=async(postdata:RegisterType,setLoading:React.Dispatch<React.SetStateAction<boolean>>,handleAlertOpen:(message:string,severity:string)=>void)=>{
+export const RegisterApi=async(postdata:RegisterType,setLoading:React.Dispatch<React.SetStateAction<boolean>>,handleAlertOpen:(message:string,severity:string)=>void,Nav:(route:string)=>void)=>{
     try {
         setLoading(true)
         await axios.post(`${url}/auth/register`,postdata)
         .then(res=>{
             setLoading(false)
             handleAlertOpen(res.data.message,"success")
+            setTimeout(()=>{
+                Nav("/")
+            },2500)
         })
     } catch (error:any) {
         setLoading(false)
@@ -37,16 +40,30 @@ export const RegisterApi=async(postdata:RegisterType,setLoading:React.Dispatch<R
 }
 
 
-export const LoginApi=async(postdata:RegisterType,dispatch:any)=>{
+export const LoginApi=async(postdata:RegisterType,dispatch:any,handleAlertOpen:(message:string,type:string)=>void,setLoading:React.Dispatch<React.SetStateAction<boolean>>,Nav:any)=>{
     dispatch(pending());
     try {
+        setLoading(true)
         await axios.post(`${url}/auth/login`,postdata)
        .then(res=>{
+            setLoading(false)
             dispatch(success(res.data))
-            window.location.href="/home"
+            handleAlertOpen(res.data.message,"success")
+            sessionStorage.setItem("token",res.data.token)
+            setTimeout(()=>{
+                if(res.data.role==="user"){
+                    Nav("/home")
+                }
+                else{
+                    Nav("/dashboard")
+                }
+                
+            },1500)
         })
-    } catch (error) {
-        console.log(error);
+    } catch (error:any) {
+        // console.log(error);
+        setLoading(false)
+        handleAlertOpen(error.response?error.response.data.message:"Something went wrong","error")
         dispatch(failure());
         
     }
