@@ -93,6 +93,7 @@ const Login: React.FC = ({ }: Props) => {
                                     variant="outlined" 
                                     size='medium'
                                     value={PostData.username}
+                                    data-testid="username_field"
                                     onChange={(e)=>handleDataChange("username",e.target.value)}
                                     sx={{
                                         borderRadius: '20px',

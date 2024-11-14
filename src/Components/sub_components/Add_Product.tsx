@@ -108,7 +108,7 @@ export default function Add_Product({ }: Props) {
             <AlertSnackBar open={AlertOpen} message={AlertMessage} severity={AlertType} handleClose={handleAlertClose} />
             <Grid container>
                 <Grid item xl={3} lg={3} sm={12} xs={12}>
-                <Typography variant='h6' sx={{fontSize:'18px',fontWeight:650}}>Category</Typography>
+                <Typography variant='h6' sx={{fontSize:'14px',fontWeight:600}}>Category</Typography>
                     <FormControl fullWidth error={errors.category?true:false} size='small'>
                         <Select
                             labelId="demo-simple-select-label"
@@ -132,7 +132,7 @@ export default function Add_Product({ }: Props) {
                 </Grid>
             </Grid>
             <Grid item xl={3} lg={3} sm={12} xs={12}>
-                <Typography variant='h6' sx={{fontSize:'18px',fontWeight:650}}>Name</Typography>
+                <Typography variant='h6' sx={{fontSize:'14px',fontWeight:600}}>Name</Typography>
                 <TextField
                     size='small'
                     fullWidth
@@ -145,7 +145,7 @@ export default function Add_Product({ }: Props) {
                 />
             </Grid>
             <Grid item xl={3} lg={3} sm={12} xs={12}>
-                <Typography variant='h6' sx={{fontSize:'18px',fontWeight:650}}>Price</Typography>
+                <Typography variant='h6' sx={{fontSize:'14px',fontWeight:600}}>Price</Typography>
                 <TextField
                     size='small'
                     fullWidth
@@ -158,7 +158,7 @@ export default function Add_Product({ }: Props) {
                 />
             </Grid>
             <Grid item xl={3} lg={3} sm={12} xs={12}>
-                <Typography variant='h6' sx={{fontSize:'18px',fontWeight:650}}>Quantity</Typography>
+                <Typography variant='h6' sx={{fontSize:'14px',fontWeight:600}}>Quantity</Typography>
                 <TextField
                     size='small'
                     fullWidth
@@ -170,8 +170,8 @@ export default function Add_Product({ }: Props) {
                     {...register("quantity",{required:"Quantity is required",pattern:{ value:/^[0-9]+$/i,message:"Quantity must be a number" }} )}
                 />
             </Grid>
-            <Grid item xl={9} lg={9} sm={12} xs={12}>
-                <Typography variant='h6' sx={{fontSize:'18px',fontWeight:650}}>Description</Typography>
+            <Grid item xl={9.4} lg={9.4} sm={12} xs={12}>
+                <Typography variant='h6' sx={{fontSize:'14px',fontWeight:600}}>Description</Typography>
                 <TextField
                     size='small'
                     fullWidth

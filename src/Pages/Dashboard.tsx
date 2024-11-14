@@ -1,12 +1,22 @@
 import { Grid } from '@mui/material'
 import React, { useState } from 'react'
 import AppDrawer from '../Components/Drawer'
+import { BiSolidAddToQueue } from "react-icons/bi";
+import { FaClipboardList } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
 
 type Props = {}
-
+type menuProp={
+  menu: string,
+  icon: any
+}
  const Dashboard=({}: Props)=> {
-  let menuItems:string[]=["Add product","My products","Orders"]
-  const [selected,setSelected]=useState<null|string>("Add product")
+  let menuItems: menuProp[] = [
+    { menu: "Add product", icon: <BiSolidAddToQueue /> },
+    { menu: "My products", icon: <FaClipboardList /> },
+    { menu: "Orders", icon: <FaCartShopping /> },
+  ];
+  const [selected,setSelected]=useState<null|string>("My products")
   return (
     <Grid container>
       
