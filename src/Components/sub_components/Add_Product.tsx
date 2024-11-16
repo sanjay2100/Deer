@@ -113,6 +113,7 @@ export default function Add_Product({ }: Props) {
                         <Select
                             labelId="demo-simple-select-label"
                             {...register("category",{required:"Category is required"})}
+                            sx={{backgroundColor:'#fff'}}
                             ref={selectref}
                         >
                             {
@@ -138,6 +139,7 @@ export default function Add_Product({ }: Props) {
                     fullWidth
                     error={errors.name?true:false}
                     helperText={errors.name?.message}
+                    sx={{backgroundColor:'#fff'}}
                     FormHelperTextProps={{
                         sx: { color: 'red' }  // Change the color to your desired value
                     }}
@@ -149,6 +151,7 @@ export default function Add_Product({ }: Props) {
                 <TextField
                     size='small'
                     fullWidth
+                    sx={{backgroundColor:'#fff'}}
                     error={errors.price?true:false}
                     helperText={errors.price?.message}
                     FormHelperTextProps={{
@@ -162,6 +165,7 @@ export default function Add_Product({ }: Props) {
                 <TextField
                     size='small'
                     fullWidth
+                    sx={{backgroundColor:'#fff'}}
                     error={errors.quantity?true:false}
                     helperText={errors.quantity?.message}
                     FormHelperTextProps={{
@@ -175,6 +179,7 @@ export default function Add_Product({ }: Props) {
                 <TextField
                     size='small'
                     fullWidth
+                    sx={{backgroundColor:'#fff'}}
                     error={errors.description?true:false}
                     helperText={errors.description?.message}
                     FormHelperTextProps={{
@@ -183,13 +188,13 @@ export default function Add_Product({ }: Props) {
                     {...register("description",{required:"Description is required"})}
                 />
             </Grid>
-            <Grid container gap={1.5}>
+            <Grid container gap={1.5} mt={1}>
                 {
 
                     [...Array(5)].map((item, index: number) => {
                         return (PostData.images[index] ?
                             <Grid item xl={1} lg={1} md={2} sm={2} xs={2}>
-                                <Box sx={{ position: 'relative',aspectRatio: 1, border: '0.8px solid #252525', borderRadius: '3px' }}>
+                                <Box sx={{ position: 'relative',aspectRatio: 1, border: '0.8px solid #dedcd7', borderRadius: '3px' }}>
                                     <Box sx={{ position: 'absolute', top: '-10px', right: '-10px', cursor: 'pointer' ,color:'#e81207'}} onClick={()=>handleImageRemove(index)}>
                                         <IoCloseCircle size={18} />
                                     </Box>
@@ -204,7 +209,7 @@ export default function Add_Product({ }: Props) {
                             </Grid>
                             :
                             <Grid item xl={1} lg={1} md={2} sm={2} xs={2}>
-                                <Box sx={{ aspectRatio: 1, border: '0.8px solid #252525', borderRadius: '3px' }}>
+                                <Box sx={{ aspectRatio: 1, border: '0.8px solid #dedcd7', borderRadius: '3px' ,backgroundColor:"#fff"}}>
                                     <Stack height="100%" justifyContent="stretch" alignItems="stretch">
                                         <Button
                                             component="label"
@@ -231,7 +236,7 @@ export default function Add_Product({ }: Props) {
                 <Grid item md={2} xs={12}>
                     <Button
                         fullWidth
-                        sx={{borderRadius:'10px',padding:1.5,fontWeight:650}} 
+                        sx={{borderRadius:'10px',padding:0.8,fontWeight:650}} 
                         color='primary'
                         type='submit'
                         variant='contained'
