@@ -7,7 +7,8 @@ import Add_Product from "./sub_components/Add_Product";
 
 type menuProp={
   menu: string,
-  icon: any
+  icon: any,
+  access:string[]
 }
 
 interface AppProps{
@@ -29,7 +30,11 @@ const AppDrawer:React.FC<AppProps>=(Props:AppProps)=>{
                 <Box
                   key={index}
                   onClick={()=>Props.setSelected(item.menu)}
-                  sx={{padding:'15px',cursor:'pointer',backgroundColor:`${Props.selected===item.menu?"#efe9f7":"#fff"}`,borderRadius:'8px'}}
+                  sx={{padding:'15px',cursor:'pointer',
+                  backgroundColor:`${Props.selected===item.menu?"#efe9f7":"#fff"}`,
+                  borderRadius:'8px',
+                  display:item.access.includes(sessionStorage.getItem("role") as string)?'flex':'none'
+                }}
                 >
                   <Stack direction="row" gap={1} alignItems="center">
                   <Box>{item.icon}</Box>

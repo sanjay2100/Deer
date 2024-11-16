@@ -8,13 +8,15 @@ import { FaCartShopping } from "react-icons/fa6";
 type Props = {}
 type menuProp={
   menu: string,
-  icon: any
+  icon: any,
+  access:string[]
 }
  const Dashboard=({}: Props)=> {
   let menuItems: menuProp[] = [
-    { menu: "Add product", icon: <BiSolidAddToQueue /> },
-    { menu: "My products", icon: <FaClipboardList /> },
-    { menu: "Orders", icon: <FaCartShopping /> },
+    { menu: "Add product", icon: <BiSolidAddToQueue /> ,access:["vendor"]},
+    { menu: "My products", icon: <FaClipboardList />,access:["vendor"] },
+    { menu: "Orders", icon: <FaCartShopping />,access:["vendor"] },
+    { menu: "Orders", icon: <FaCartShopping />,access:["Admin"] }
   ];
   const [selected,setSelected]=useState<null|string>("My products")
   return (

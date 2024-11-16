@@ -50,6 +50,7 @@ export const LoginApi=async(postdata:RegisterType,dispatch:any,handleAlertOpen:(
             dispatch(success(res.data))
             handleAlertOpen(res.data.message,"success")
             sessionStorage.setItem("token",res.data.token)
+            sessionStorage.setItem("role",res.data.role)
             setTimeout(()=>{
                 if(res.data.role==="user"){
                     Nav("/home")
