@@ -45,9 +45,16 @@ export const RegisterUserAsVendor=(data:PostDataType,token:string,isLoading:(ope
 
 
 export const AddProduct=async(data:postProduct,setIsLoading:React.Dispatch<SetStateAction<boolean>>,handleAlertOpen:(message:string,type:string)=>void,reset:()=>void)=>{
+    const fd=new FormData();
+    fd.append("name",data.name);
+    fd.append("price",data.price.toString());
+    fd.append("description",data.description);
+    fd.append("category",data.category);
+    fd.append("quantity",data.quantity.toString());
+    data.images.forEach((file:File)=>fd.append("images",file))
     try {
         setIsLoading(true)
-        await axios.post(`${url}/product/create`,data,{
+        await axios.post(`${url}/product/create`,fd,{
             headers:{
                 Authorization:`Bearer ${sessionStorage.getItem("token")}`
             }

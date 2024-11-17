@@ -11,7 +11,7 @@ import { TbCameraUp } from "react-icons/tb";
 import { styled } from '@mui/material/styles';
 import { IoCloseCircle } from "react-icons/io5";
 import { useForm, SubmitHandler } from "react-hook-form"
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AddProduct } from '../../Api/VendorApi';
 
 type Props = {}
@@ -46,6 +46,7 @@ export default function Add_Product({ }: Props) {
     const [categories, setCategories] = useState([])
     const selectref=useRef<HTMLSelectElement|string>("")
     const state=useSelector((state:any)=>state.user_info)
+    const dispatch=useDispatch()
 
     const {
         register,
@@ -82,7 +83,7 @@ export default function Add_Product({ }: Props) {
     }
 
     useEffect(() => {
-        GetCategories(setLoading, setCategories, handleAlertOpen)
+        GetCategories(setLoading, setCategories, handleAlertOpen,dispatch)
     }, [])
 
     const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
