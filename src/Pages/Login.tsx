@@ -123,6 +123,7 @@ const Login: React.FC = ({ }: Props) => {
                                     id="outlined-basic"
                                     label="Password"
                                     variant="outlined"
+                                    type="password"
                                     value={PostData.password}
                                     onChange={(e)=>handleDataChange("password",e.target.value)}
                                     sx={{

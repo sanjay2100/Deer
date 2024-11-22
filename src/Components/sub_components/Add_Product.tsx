@@ -115,7 +115,8 @@ export default function Add_Product({ }: Props) {
                             labelId="demo-simple-select-label"
                             {...register("category",{required:"Category is required"})}
                             sx={{backgroundColor:'#fff'}}
-                            ref={selectref}
+                            // ref={selectref}
+                    
                         >
                             {
                                 categories ?
@@ -123,7 +124,7 @@ export default function Add_Product({ }: Props) {
                                         <MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>
                                     ))
                                     :
-                                    <MenuItem value={0}>Loading...</MenuItem>
+                                    <MenuItem value={"Loading..."}>Loading...</MenuItem>
                             }
                             
                         </Select>

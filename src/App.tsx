@@ -8,6 +8,7 @@ import { TestRoute } from "./Api/AuthApi"
 import Dashboard from "./Pages/Dashboard"
 import VendorRegistration from "./Pages/VendorRegistration"
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import CategoryProducts from "./Pages/CategoryProducts"
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/home" element={<Home/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="vendor-registration" element={<VendorRegistration/>}/>
+        <Route path="/categories/:id" element={<CategoryProducts/>}/>
       </Routes>
       </TransitionGroup>
 
