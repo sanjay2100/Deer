@@ -37,12 +37,13 @@ const Header = () => {
     const headerBox = {
         paddingBlock: "15px",
         paddingInline: "10px",
-        background:location.pathname==="/dashboard"?"#dae1ed" :"#061b47"
+        background:"#fff",
+        borderBottom:'0.8px solid #d9d7d0'
     }
     
     const Icons = {
         fontSize: "22px",
-        color:location.pathname==="/dashboard"?"#252525": "#fff",
+        color:"#252525",
         cursor: 'pointer',
     }
     
@@ -53,7 +54,7 @@ const Header = () => {
                 <Box sx={headerBox}>
                     <Grid container justifyContent='space-between' alignItems='center'>
                         <Grid item xl={2} onClick={()=>Nav("/home")}>
-                            <Typography variant="h5" sx={{ color:location.pathname==="/dashboard"?"#252525": "#fff", fontWeight: 600 }}>EZCart</Typography>
+                            <Typography variant="h5" sx={{ color:"#252525", fontWeight: 600 }}>EZCart</Typography>
                         </Grid>
                         <Grid item xl={4}>
                             <TextField

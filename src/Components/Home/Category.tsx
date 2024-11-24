@@ -10,7 +10,7 @@ interface Props {
 
 const Category = (props: Props) => {
 
-  const url:string=import.meta.env.VITE_AUTH_URL
+  const url: string = import.meta.env.VITE_AUTH_URL
 
 
   const arrayBufferToBlobUrl = (arrayBuffer: any, mimeType: any) => {
@@ -19,41 +19,42 @@ const Category = (props: Props) => {
     return URL.createObjectURL(blob);
   };
 
-  const Nav=useNavigate()
+  const Nav = useNavigate()
 
 
 
   return (
-    <Grid container paddingInline={5} gap={5}>
-
+    <Grid paddingInline={5} textAlign='center'>
+      <Typography variant='h4' sx={{fontWeight:550,mb:2}}>Category</Typography>
+    <Grid container  gap={5} justifyContent="space-between">
       {
-        props.menues && props.menues.slice(props.menues.length - 3, props.menues.length).map((item, index) => (
+        props.menues && props.menues.slice(props.menues.length - 5, props.menues.length).map((item, index) => (
           // <Stack justifyContent="center" alignItems="center" key={index}>
           //     <Avatar sx={{ width: 100, height: 100 }} alt={"null"} src={arrayBufferToBlobUrl(item.image, 'image/jpeg')} />
           //     <Typography variant="h6">{item.name}</Typography>
           // </Stack>
-          <Grid item xl={2} lg={1.4} md={2} xs={12} key={index} onClick={()=>Nav(`/categories/${item._id}`)}>
+          <Grid item xl={2} lg={1.4} md={2} xs={12} key={index} onClick={() => Nav(`/categories/${item._id}`)}>
             <Box sx={{
               height: '30vh',
-              borderRadius: '8px',
+              borderRadius: '20px',
               width: '100%',
-              background: `url(${url}/image/${item.image[0].filename})`, 
-              backgroundSize: 'cover', 
-              backgroundPosition: 'center', 
+              background: `url(${url}/image/${item.image[0].filename})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               display: 'flex',
               flexDirection: 'column',
               overflow: 'hidden',
-              cursor:'pointer'
+              cursor: 'pointer'
             }}>
               <Box sx={{
                 textAlign: 'center',
                 padding: '8px',
-                opacity:'90%',
+                opacity: '90%',
                 background: 'linear-gradient(180deg,#252525,#252525)',
-                backgroundBlendMode:'multiply'
+                backgroundBlendMode: 'multiply'
               }}>
-                <Typography color="#fff" sx={{opacity:'150%',}}>{item.name}</Typography>
+                <Typography color="#fff" sx={{ opacity: '150%', fontSize: '18px' }}>{item.name}</Typography>
               </Box>
             </Box>
           </Grid>
@@ -62,6 +63,7 @@ const Category = (props: Props) => {
       }
 
 
+    </Grid>
     </Grid>
   )
 }

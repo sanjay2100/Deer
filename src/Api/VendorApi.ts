@@ -27,6 +27,7 @@ export const RegisterUserAsVendor=(data:PostDataType,token:string,isLoading:(ope
                 pincode:"",
                 address:""
             })
+            sessionStorage.setItem("role","vendor")
             setTimeout(()=>{
                 Nav("/dashboard")
             },1500)

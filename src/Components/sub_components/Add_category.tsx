@@ -137,7 +137,7 @@ export default function Add_Category({ }: Props) {
                     </Grid>
                     :
                     <Grid key={index} item xl={1} lg={1} md={1} sm={2} xs={2}>
-                        <Box sx={{ aspectRatio: 1, border: '0.8px solid #dedcd7', borderRadius: '3px', backgroundColor: "#fff" }}>
+                        <Box sx={{position:'relative', aspectRatio: 1, border: '0.8px solid #dedcd7', borderRadius: '3px', backgroundColor: "#fff" }}>
                             <Stack height="100%" justifyContent="stretch" alignItems="stretch">
                                 <Button
                                     component="label"

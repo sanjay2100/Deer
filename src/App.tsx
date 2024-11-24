@@ -9,6 +9,7 @@ import Dashboard from "./Pages/Dashboard"
 import VendorRegistration from "./Pages/VendorRegistration"
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CategoryProducts from "./Pages/CategoryProducts"
+import ViewProduct from "./Pages/ViewProduct"
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="vendor-registration" element={<VendorRegistration/>}/>
         <Route path="/categories/:id" element={<CategoryProducts/>}/>
+        <Route path="/product" element={<ViewProduct/>}/>
       </Routes>
       </TransitionGroup>
 

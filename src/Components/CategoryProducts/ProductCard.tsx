@@ -18,16 +18,16 @@ type Props = {
   const url:string=import.meta.env.VITE_AUTH_URL
 
   return (
-    <Box sx={{backgroundColor:'whitesmoke',borderRadius:'8px',border:'0.8px solid #ebebeb'}}>
+    <Box sx={{backgroundColor:'whitesmoke',borderRadius:'10px',border:'0.8px solid #ebebeb'}}>
         <Stack>
             
-            <Box sx={{borderRadius:'8px 8px 0px 0px',overflow:'hidden'}}>
-                <img src={`${url}/image/${props.images[4].filename}`} alt={props.name} style={{width:'100%',height:'200px',objectFit:'cover'}}/>
+            <Box sx={{borderRadius:'10px 10px 0px 0px',overflow:'hidden'}}>
+                <img src={`${url}/image/${props.images[0].filename}`} alt={props.name} style={{width:'100%',height:'200px',objectFit:'cover'}}/>
             </Box>
             <Box padding={3}>
                 <Stack sx={{textAlign:'left'}}>
                   <Typography variant='h4' sx={{fontSize:'18px',fontWeight:650}}>{props.name}</Typography>
-                  <Typography variant='h6'sx={{fontSize:'14px',color:'grey'}}>{props.price}</Typography>
+                  <Typography variant='h6'sx={{fontSize:'14px',color:'green',fontWeight:650}}>{props.price}</Typography>
                 </Stack>
             </Box>
         </Stack>
