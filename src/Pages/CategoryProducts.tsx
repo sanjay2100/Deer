@@ -54,7 +54,7 @@ const CategoryProducts = ({ }: Props) => {
       <Grid container >
         <Grid item xl={2} lg={2} md={2} xs={0} height='92vh' >
           <Stack sx={{ backgroundColor: 'whitesmoke', height: '100%' }} padding={2}>
-            <Typography variant='h5' sx={{ fontSize: '18px' }}>Sort by</Typography>
+            <Typography variant='h5' sx={{ fontSize: '18px' ,fontWeight:650}}>Sort by</Typography>
             <Box ml={2}>
               <FormControl sx={{
                     color: grey[800],
