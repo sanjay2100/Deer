@@ -45,7 +45,7 @@ export const getProductById=async(id:string,setData:React.Dispatch<SetStateActio
         })
     } catch (error:any) {
         setIsLoading(false)
-        handleErrorOpen("error",error.response?error.response.data.message:"Something went wrong")    
+        handleErrorOpen(error.response?error.response.data.message:"Something went wrong","error")    
     }
 }
 
@@ -63,6 +63,6 @@ export const getNewArrivals=async(setIsLoading:React.Dispatch<SetStateAction<boo
         })
     } catch (error:any) {
         setIsLoading(false)
-        handleErrorOpen("error",error.response?error.response.data.message:"Something went wrong") 
+        handleErrorOpen(error.response?error.response.data.message:"Something went wrong","error") 
     }
 }

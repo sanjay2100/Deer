@@ -12,11 +12,11 @@ export default function SimpleSlider() {
  
   
   return (
-    <Box height="80vh" sx={{overflow:'hidden',display:'flex',justifyContent:'space-between',background:"linear-gradient(90deg,#fff,dodgerblue)",mb:10}}>
+    <Box height="80vh" sx={{overflow:'hidden',display:'flex',justifyContent:'space-between',background:"linear-gradient(135deg,#31B7C2,#7BC393)",mb:10}}>
         <Box paddingInline={5} width="60%">
             <Stack height="100%" justifyContent="center">
-            <Typography variant="h1" sx={{fontWeight:500,color:"#f0610e",fontFamily:"Poppins, sans-serif"}}>Quality at Your Doorstep</Typography>
-            <Typography variant="h4" sx={{color:"#093887",fontFamily:"Poppins, sans-serif"}}>Shop with Confidence</Typography>
+            <Typography variant="h1" sx={{fontWeight:500,color:"#fff",fontFamily:"Poppins, sans-serif"}}>Quality at Your Doorstep</Typography>
+            <Typography variant="h4" sx={{color:"#fff",fontFamily:"Poppins, sans-serif",padding:'5px',borderRadius:'10px'}}>Shop with Confidence</Typography>
             </Stack>
         </Box>
         <Box padding={5} width="40%" sx={{display:window.innerWidth>800?'flex':'none'}}>
