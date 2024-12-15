@@ -1,0 +1,11 @@
+
+
+.card-outer:hover .card-image{
+    scale:110%;
+    rotate: 1deg;
+}
+
+.card-image{
+    transition-duration: 0.5s;
+}
+

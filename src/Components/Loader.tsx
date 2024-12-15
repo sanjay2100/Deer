@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
-import gif from "../assets/SVG/EZ.gif"
+import gif from "../assets/SVG/EZ.svg"
 interface propType{
     open: boolean,
 }
@@ -18,8 +18,8 @@ interface propType{
         src={gif}
         alt="loading..."
         style={{
-          width: '100%',
-          height: '100%',
+          width: '10%',
+          height: '10%',
           objectFit: 'contain',
           filter: 'brightness(1) invert(0)',
           backgroundBlendMode:'multiply',

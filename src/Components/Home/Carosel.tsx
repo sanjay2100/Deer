@@ -1,19 +1,42 @@
 // import React from "react";
 // import Slider from "react-slick";
-import image1 from "../../assets/images/cartimage.jpg"
 import { Box, Stack, Typography } from "@mui/material";
+import image1 from "../../assets/images/listeningmusic.avif"
+import image2 from "../../assets/images/fashion.jpg"
+import image3 from "../../assets/images/furniture.jpg"
+
+
+
 export default function SimpleSlider() {
+
+ 
   
   return (
-    <Box height="80vh" sx={{overflow:'hidden',display:'flex',justifyContent:'space-between'}}>
-        <Box paddingInline={5} width="45%">
+    <Box height="80vh" sx={{overflow:'hidden',display:'flex',justifyContent:'space-between',background:"linear-gradient(90deg,#fff,dodgerblue)",mb:10}}>
+        <Box paddingInline={5} width="60%">
             <Stack height="100%" justifyContent="center">
-            <Typography variant="h2" sx={{fontWeight:650,color:"#f0610e"}}>Quality at Your Doorstep</Typography>
-            <Typography variant="h6" sx={{color:"#093887"}}>Shop with Confidence</Typography>
+            <Typography variant="h1" sx={{fontWeight:500,color:"#f0610e",fontFamily:"Poppins, sans-serif"}}>Quality at Your Doorstep</Typography>
+            <Typography variant="h4" sx={{color:"#093887",fontFamily:"Poppins, sans-serif"}}>Shop with Confidence</Typography>
             </Stack>
         </Box>
-        <Box width="65%" p={5}>
-          <img src={image1} alt="img" style={{borderRadius:'20px 20px 20px 20px'}}/>
+        <Box padding={5} width="40%" sx={{display:window.innerWidth>800?'flex':'none'}}>
+            <Stack width="100%" gap={-1}>
+              <Stack direction="row" width="100%" justifyContent="flex-start">
+                <Box sx={{aspectRatio:1,width:'50%',borderRadius:'50%',border:'10px solid #fff',display:'flex',objectFit:'cover',overflow:'hidden'}}>
+                    <img style={{width:'100%'}} src={image1} alt=""/>
+                </Box>
+              </Stack>
+              <Stack direction="row" width="100%" justifyContent="center">
+                <Box sx={{aspectRatio:1,width:'40%',borderRadius:'50%',border:'10px solid #fff',display:'flex',objectFit:'cover',overflow:'hidden'}}>
+                    <img style={{width:'100%'}} src={image2} alt=""/>
+                </Box>
+              </Stack>
+              <Stack direction="row" width="100%" justifyContent="flex-start">
+                <Box sx={{aspectRatio:1,width:'30%',borderRadius:'50%',border:'10px solid #fff',display:'flex',objectFit:'cover',overflow:'hidden'}}>
+                    <img style={{width:'100%'}} src={image3} alt=""/>
+                </Box>
+              </Stack>
+            </Stack>
         </Box>
     </Box>
   );

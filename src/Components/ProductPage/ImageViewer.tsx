@@ -1,4 +1,4 @@
-import { Box, Grid, Select } from '@mui/material'
+import { Box, Button, Grid, Select,Stack } from '@mui/material'
 import React, { useState } from 'react'
 
 type product={
@@ -16,23 +16,36 @@ const ImageViewer:React.FC<ImageType>=(Props)=> {
 
     const[SelectImage,setSeletedImage]=useState<number>(0)
 
-    const smallStyle={
-        
+    const handlePrevious=()=>{
+        if(SelectImage>0){
+            setSeletedImage((prevState)=>prevState-1)
+        }
+    }
 
+    const handleNext=()=>{
+        if(Props.data&&Array.isArray(Props.data)&&SelectImage<Props.data.length-1){
+            setSeletedImage((prevState)=>prevState+1)
+        }
+        else{
+            setSeletedImage(0)
+        }
     }
 
   return (
     <Grid container justifyContent="center" alignItems="center" paddingInline={3}>
-        <Grid item xs={12} sx={{height:{md:'70vh',xs:'40vh'},overflow:'hidden',display:'flex',flexDirection:'column',justifyContent:'center',objectFit:'cover'}} p={{md:10,xs:3}}>
-            
+        <Grid item xs={12} sx={{height:{md:'70vh',xs:'40vh'},display:'flex',flexDirection:'column',justifyContent:'center',objectFit:'cover'}} p={{md:10,xs:3}}>
+            <Stack width="100%"  direction="row" alignItems="center" justifyContent="center" overflow="hidden">
+                <Button onClick={handlePrevious}>{"<"}</Button>
                 <img 
                 src={Props.data?`${url}/image/${Props.data[SelectImage].filename}`:undefined} 
                 alt='img'
                 style={{
-                    width:'100%', 
+                    width:'80%', 
                     objectFit:'cover'
                 }}
                 />
+                    <Button  onClick={handleNext}>{">"}</Button>
+            </Stack>
         </Grid>
         <Grid container gap={2} justifyContent="space-between" mt={5}>
             {

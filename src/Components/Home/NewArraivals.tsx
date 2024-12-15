@@ -1,0 +1,43 @@
+import { Grid, Typography } from '@mui/material'
+import React from 'react'
+import ProductCard from '../CategoryProducts/ProductCard'
+import { useNavigate } from 'react-router-dom'
+import ProductCardSkeleton from '../CategoryProducts/ProductCardSkeleton'
+
+type Props = {
+    data:any[]|null
+}
+
+export default function NewArraivals(props: Props) {
+    const Nav=useNavigate()
+  return (
+    <Grid container paddingInline={5}>
+        <Grid item xs={12}>
+            <Typography variant='h5' sx={{fontWeight:500,mb:2}}>New Arrivals</Typography>
+        </Grid>
+        <Grid container justifyContent="space-between" alignItems="center" gap={2}>
+            
+                {
+                    props.data&&Array.isArray(props.data)?
+                    props.data.map((item,index)=>(
+                        <Grid sx={{cursor:'pointer'}} item xl={1.5} md={3} xs={12} onClick={()=>Nav('/product',{
+                            state:{
+                                product_id: item._id
+                            }
+                        })}>
+                        <ProductCard key={index} name={item.name} price={item.price} images={item.images}/>
+                        </Grid>
+                    ))        
+                    :
+                    [...Array(5)].map((item,index)=>(
+                        <Grid item key={index} xl={1.5} md={1.5} xs={12} sx={{ cursor: 'pointer' }} >
+      
+                            <ProductCardSkeleton/>
+                        </Grid>
+                      ))
+                }
+            
+        </Grid>
+    </Grid>
+  )
+}

@@ -13,6 +13,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { grey, orange } from '@mui/material/colors'
+import ProductCardSkeleton from '../Components/CategoryProducts/ProductCardSkeleton'
 
 type Props = {}
 
@@ -95,9 +96,9 @@ const CategoryProducts = ({ }: Props) => {
         <Grid item xl={10} lg={10} md={10} xs={12} padding={3}>
 
           <Stack justifyContent="space-between" height="100%">
-            <Grid container gap={5}>
+            <Grid container gap={5}  justifyContent={Data&&Array.isArray(Data.products)&&Data.products.length>=5?"space-between":"flex-start"}>
               {
-                Data && Array.isArray(Data.products) &&
+                Data && Array.isArray(Data.products) ?
                 Data.products.sort((a:any,b:any)=>{
                  return SortingOption==="price"?
                     a.price-b.price
@@ -106,6 +107,13 @@ const CategoryProducts = ({ }: Props) => {
                 }).map((product: any, index: number) => (
                   <Grid item key={index} xl={2} lg={3} md={4} xs={12} sx={{ cursor: 'pointer' }} onClick={() => Nav(`/product`, { state: { product_id: product._id } })}>
                     <ProductCard name={product.name} price={product.price} images={product.images} />
+                  </Grid>
+                ))
+                :
+                [...Array(10)].map((item,index)=>(
+                  <Grid item key={index} xl={2} lg={3} md={4} xs={12} sx={{ cursor: 'pointer' }} >
+
+                  <ProductCardSkeleton/>
                   </Grid>
                 ))
               }

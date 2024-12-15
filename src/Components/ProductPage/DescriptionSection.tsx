@@ -14,10 +14,11 @@ const DescriptionSection:React.FC<any>=(props)=> {
         <Grid item xs={12}>
             <Typography variant='h4'>{props.data?props.data.name:""}</Typography>
         
-            <Typography variant='h6' color="#575656">₹{props.data?props.data.price:""}</Typography>
+            <Typography variant='h6' color="green">₹{props.data?props.data.price:""}</Typography>
+            <Typography mt={1} variant='subtitle1' color="#575656">{props.data?props.data.description:""}</Typography>
+
         </Grid>
         <Grid item xs={12}>
-            <Typography variant='subtitle1' color="#575656">{props.data?props.data.description:""}</Typography>
         </Grid>
         <Grid item xs={12}>
             <Stack direction="row" gap={2} justifyContent="center" alignItems="center" height="100%">

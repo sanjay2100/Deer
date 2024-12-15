@@ -48,3 +48,21 @@ export const getProductById=async(id:string,setData:React.Dispatch<SetStateActio
         handleErrorOpen("error",error.response?error.response.data.message:"Something went wrong")    
     }
 }
+
+export const getNewArrivals=async(setIsLoading:React.Dispatch<SetStateAction<boolean>>,setData:React.Dispatch<SetStateAction<any>>,handleErrorOpen:(type:string,message:string)=>void)=>{
+    try {
+        setIsLoading(true)
+        await axios.get(`${url}/product/get_new_arrival`,{
+            headers:{
+                Authorization:`Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
+        .then((res)=>{
+            setIsLoading(false)
+            setData(res.data)
+        })
+    } catch (error:any) {
+        setIsLoading(false)
+        handleErrorOpen("error",error.response?error.response.data.message:"Something went wrong") 
+    }
+}
