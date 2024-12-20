@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import PrimaryButton from '../Components/Buttons';
 import { RegisterType } from '../Types/authtypes';
 import { LoginApi } from '../Api/AuthApi';
-// import registerImage from '../assets/SVG/register.svg'
+import abstract from '../assets/images/abstractbg.jpg'
 import { Box, Button, Grid, Stack, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import {useNavigate} from "react-router-dom"
@@ -43,15 +43,20 @@ const Login: React.FC = ({ }: Props) => {
     }
 
     const buttonStyle: object = {
-        background: "linear-gradient(120deg,#553eed,#5e5b70)",
+        backgroundImage:`url(${abstract})`,
+        backgroundColor: "#969696",
+        backgroundBlendMode:"multiply",
         borderRadius: 10,
         height: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'flex-start',
         flexDirection: 'column',
+        objectFit:"contain",
         gap: 20,
-        padding: 10
+        padding: 10,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
     }
 
 
@@ -82,8 +87,8 @@ const Login: React.FC = ({ }: Props) => {
                     <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                         <Stack sx={{height:'100%'}} justifyContent="center">
                             <Stack direction="column" justifyContent="center" alignItems="center" gap={1}>
-                                <Typography variant='h1' sx={{ fontSize: '50px', fontWeight: 650 ,color:"#6f46eb"}}>EZCart</Typography>
-                                <Typography variant='body1' color="GrayText" fontSize="25px">Please login to your account</Typography>
+                                <Typography variant='h1' sx={{ fontSize: '30px', fontWeight: 800 ,color:"#252525"}}>EZCart</Typography>
+                                <Typography variant='body1' color="GrayText" fontSize="20px">Please login to your account</Typography>
                             </Stack>
                             <Stack gap={5} mt={3}>
                                 <TextField

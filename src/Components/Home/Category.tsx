@@ -26,7 +26,7 @@ const Category = (props: Props) => {
   return (
     <Grid paddingInline={5} textAlign='left' mb={10}>
       <Typography variant='h5' sx={{fontWeight:500,mb:2}}>Category</Typography>
-    <Grid container  gap={5} justifyContent="space-between">
+    <Grid container  gap={5} justifyContent={Array.isArray(props.menues)&&props.menues.length>=5?"space-between":"flex-start"}>
       {
         props.menues?
         props.menues && props.menues.slice(props.menues.length - 5, props.menues.length).map((item, index) => (
@@ -34,10 +34,10 @@ const Category = (props: Props) => {
           //     <Avatar sx={{ width: 100, height: 100 }} alt={"null"} src={arrayBufferToBlobUrl(item.image, 'image/jpeg')} />
           //     <Typography variant="h6">{item.name}</Typography>
           // </Stack>
-          <Grid item xl={1} lg={1} md={2} xs={2} key={index} onClick={() => Nav(`/categories/${item._id}`)}>
+          <Grid item xl={1.5} lg={1.5} md={2} xs={2} key={index} display="flex" flexDirection="column" alignItems="center" justifyContent="center" onClick={() => Nav(`/categories/${item._id}`)}>
             <Box sx={{
               borderRadius: '50%',
-              width: '100%',
+              width: '50%',
               background: `url(${url}/image/${item.image[0].filename})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',

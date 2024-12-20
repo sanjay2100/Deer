@@ -15,12 +15,12 @@ export default function NewArraivals(props: Props) {
         <Grid item xs={12}>
             <Typography variant='h5' sx={{fontWeight:500,mb:2}}>New Arrivals</Typography>
         </Grid>
-        <Grid container justifyContent="space-between" alignItems="center" gap={2}>
+        <Grid container justifyContent={Array.isArray(props.data)&&props.data.length>=5?"space-between":"flex-start"} alignItems="center" gap={3}>
             
                 {
                     props.data&&Array.isArray(props.data)?
                     props.data.map((item,index)=>(
-                        <Grid sx={{cursor:'pointer'}} item xl={1.5} md={3} xs={12} onClick={()=>Nav('/product',{
+                        <Grid sx={{cursor:'pointer'}} item xl={1.5} md={1.5} xs={12} onClick={()=>Nav('/product',{
                             state:{
                                 product_id: item._id
                             }
@@ -30,7 +30,7 @@ export default function NewArraivals(props: Props) {
                     ))        
                     :
                     [...Array(5)].map((item,index)=>(
-                        <Grid item key={index} xl={1.5} md={1.5} xs={12} sx={{ cursor: 'pointer' }} >
+                        <Grid item key={index} xl={1.5} lg={1.5} md={1.5} xs={12} sx={{ cursor: 'pointer' }} >
       
                             <ProductCardSkeleton/>
                         </Grid>
