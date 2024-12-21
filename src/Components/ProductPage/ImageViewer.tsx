@@ -35,7 +35,7 @@ const ImageViewer:React.FC<ImageType>=(Props)=> {
     <Grid container justifyContent="center" alignItems="center" paddingInline={3}>
         <Grid item xs={12} sx={{height:{md:'70vh',xs:'40vh'},display:'flex',flexDirection:'column',justifyContent:'center',objectFit:'cover'}} p={{md:10,xs:3}}>
             <Stack width="100%"  direction="row" alignItems="center" justifyContent="center" overflow="hidden">
-                <Button onClick={handlePrevious}>{"<"}</Button>
+                <Button sx={{color:"#eb4917",fontSize:'25px'}} onClick={handlePrevious}>{"<"}</Button>
                 <img 
                 src={Props.data?`${url}/image/${Props.data[SelectImage].filename}`:undefined} 
                 alt='img'
@@ -44,7 +44,7 @@ const ImageViewer:React.FC<ImageType>=(Props)=> {
                     objectFit:'cover'
                 }}
                 />
-                    <Button  onClick={handleNext}>{">"}</Button>
+                    <Button sx={{color:"#eb4917",fontSize:'25px'}}  onClick={handleNext}>{">"}</Button>
             </Stack>
         </Grid>
         <Grid container gap={2} justifyContent="space-between" mt={5}>

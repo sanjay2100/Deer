@@ -50,7 +50,7 @@ type Props = {}
             <ImageViewer data={ProductData?ProductData.images:null}/>
         </Grid>
         <Grid item xl={6} lg={6} md={6} xs={12}>
-            <DescriptionSection data={ProductData?ProductData:null}/>
+            <DescriptionSection id={id} data={ProductData?ProductData:null}/>
         </Grid>
       </Grid>
   )
