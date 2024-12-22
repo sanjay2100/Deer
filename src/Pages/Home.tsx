@@ -23,7 +23,7 @@ type Props = {}
   const [AlertType,setAlertType]=useState<string>("")
   const dispatch=useDispatch()
 
-  const handleOpenAlert=(type:string,message:string)=>{
+  const handleOpenAlert=(message:string,type:string)=>{
     setAlertType(type)
     setAlertMessgae(message)
     setOpenAlert(true)
