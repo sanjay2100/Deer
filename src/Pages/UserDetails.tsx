@@ -157,7 +157,7 @@ export const UserDetails = ({ }: Props) => {
                                         size='small'
                                         // onChange={(e)=>handleChange("name",e.target.value)}
                                         {...register("name", { required: "Name is required" })}
-                                        helperText={errors.name?.message}
+                                        helperText={typeof errors.name?.message === 'string' ? errors.name.message : undefined}
                                     />
                                 </Grid>
                                 <Grid item md={6} xs={12}>
@@ -167,7 +167,7 @@ export const UserDetails = ({ }: Props) => {
                                         size='small'
                                         id="outlined-multiline-flexible"
                                         fullWidth
-                                        helperText={errors.mobilenumber?.message}
+                                        helperText={typeof errors.mobilenumber?.message === 'string' ? errors.mobilenumber.message : undefined}
 
                                         // onChange={(e)=>handleChange("mobilenumber",e.target.value)}
                                         {...register("mobilenumber", { required: "Mobile no is required", pattern: { value: /^[0-9]*$/, message: "Mobile number mest be a number" } })}
@@ -181,7 +181,7 @@ export const UserDetails = ({ }: Props) => {
                                         fullWidth
                                         size='small'
                                         error={errors.email ? true : false}
-                                        helperText={errors.email?.message}
+                                        helperText={typeof errors.email?.message === 'string' ? errors.email.message : undefined}
 
                                         // onChange={(e)=>handleChange("email",e.target.value)}
                                         {...register("email", {
@@ -208,7 +208,7 @@ export const UserDetails = ({ }: Props) => {
 
                                         fullWidth
                                         error={errors.address ? true : false}
-                                        helperText={errors.address?.message}
+                                        helperText={typeof errors.address?.message === 'string' ? errors.address.message : undefined}
 
                                         // onChange={(e)=>handleChange("address",e.target.value)}
                                         {...register("address", { required: "Address is required" })}
@@ -240,7 +240,7 @@ export const UserDetails = ({ }: Props) => {
 
                                         </Select>
                                         <FormHelperText>
-                                            {errors.state ? errors.state.message : ""}
+                                            {typeof errors.state?.message === 'string' ? errors.state.message : undefined}
                                         </FormHelperText>
                                     </FormControl>
                                 </Grid>
@@ -268,7 +268,7 @@ export const UserDetails = ({ }: Props) => {
 
                                         </Select>
                                         <FormHelperText>
-                                            {errors.district ? errors.district.message : ""}
+                                            {typeof errors.district?.message === 'string' ? errors.district.message : undefined}
                                         </FormHelperText>
                                     </FormControl>
                                 </Grid>
@@ -283,7 +283,7 @@ export const UserDetails = ({ }: Props) => {
                                         size='small'
                                         {...register("pincode", { required: "Category is required" })}
                                         error={errors.pincode ? true : false}
-                                        helperText={errors.pincode?.message}
+                                        helperText={typeof errors.pincode?.message === 'string' ? errors.pincode.message : undefined}
 
                                     />
                                 </Grid>
