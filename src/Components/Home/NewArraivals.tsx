@@ -20,7 +20,7 @@ export default function NewArraivals(props: Props) {
                 {
                     props.data&&Array.isArray(props.data)?
                     props.data.map((item,index)=>(
-                        <Grid sx={{cursor:'pointer'}} item xl={1.5} md={1.5} xs={12} onClick={()=>Nav('/product',{
+                        <Grid sx={{cursor:'pointer'}} item xl={1.5} md={2} sm={4} xs={12} onClick={()=>Nav('/product',{
                             state:{
                                 product_id: item._id
                             }

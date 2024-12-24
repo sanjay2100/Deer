@@ -65,3 +65,44 @@ export const handlePostUserDetails=async(productId:string,data:any,setIsLoading:
         handleAlertOpen(error.response&&error.response.data?error.response.data.message:"Something went wrong","error")
     }
 }
+
+export const VerifyEmail=async(setIsLoading:React.Dispatch<SetStateAction<boolean>>,email:string,handleAlertOpen:(message:string,type:string)=>void,handleDialogOpen:()=>void)=>{
+    try{
+        setIsLoading(true)
+        await axios.post(`${url}/email/verification/verify_email`,{email:email},{
+            headers:{
+                Authorization:`Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
+        .then((res)=>{
+            setIsLoading(false)
+            handleAlertOpen(res.data&&res.data.message?res.data.message:"Otp has been sent to your email","success")
+            handleDialogOpen()
+        })
+    }
+    catch(error:any){
+        setIsLoading(false)
+        handleAlertOpen(error.response&&error.response.data.message?error.response.data.message:"Something went wrong","error")
+    }
+}
+
+export const VerifyEmailOtp=async(setIsLoading:React.Dispatch<SetStateAction<boolean>>,data:object,handleAlertOpen:(message:string,type:string)=>void,handleDialogclose:()=>void,setOtpVerified:React.Dispatch<SetStateAction<boolean>>)=>{
+    try{
+        setIsLoading(true)
+        await axios.post(`${url}/email/verification/verify_email_otp`,data,{
+            headers:{
+                Authorization:`Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
+        .then((res)=>{
+            setIsLoading(false)
+            setOtpVerified(true)
+            handleAlertOpen(res.data&&res.data.message?res.data.message:"Email verified successfully","success")
+            handleDialogclose()
+        })
+    }
+    catch(error:any){
+        setIsLoading(false)
+        handleAlertOpen(error.response&&error.response.data.message?error.response.data.message:"Something went wrong","error")
+    }
+}
