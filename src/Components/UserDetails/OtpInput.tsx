@@ -154,13 +154,13 @@ function OTP({
             aria-label={`Digit ${index + 1} of OTP`}
             slotProps={{
               input: {
-                ref: (ele) => {
+                ref: (ele:any) => {
                   inputRefs.current[index] = ele!;
                 },
-                onKeyDown: (event) => handleKeyDown(event, index),
-                onChange: (event) => handleChange(event, index),
-                onClick: (event) => handleClick(event, index),
-                onPaste: (event) => handlePaste(event, index),
+                onKeyDown: (event:any) => handleKeyDown(event, index),
+                onChange: (event:any) => handleChange(event, index),
+                onClick: (event:any) => handleClick(event, index),
+                onPaste: (event:any) => handlePaste(event, index),
                 value: value[index] ?? '',
               },
             }}

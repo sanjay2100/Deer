@@ -18,14 +18,14 @@ export const CheckUserDetailsStatus=async(productId:string,setIsLoading:React.Di
             if(res.data.available==false){
                 Nav('/user_details',{
                     state:{
-                        productId:productId
+                        productId:[productId]
                     }
                 })
             }
             else{
                 Nav('/checkout',{
                     state:{
-                        productId:productId
+                        productId:[productId]
                     }
                 })
             }
@@ -99,6 +99,25 @@ export const VerifyEmailOtp=async(setIsLoading:React.Dispatch<SetStateAction<boo
             setOtpVerified(true)
             handleAlertOpen(res.data&&res.data.message?res.data.message:"Email verified successfully","success")
             handleDialogclose()
+        })
+    }
+    catch(error:any){
+        setIsLoading(false)
+        handleAlertOpen(error.response&&error.response.data.message?error.response.data.message:"Something went wrong","error")
+    }
+}
+
+export const GetUserDetails=async(setData:React.Dispatch<SetStateAction<any>>,setIsLoading:React.Dispatch<SetStateAction<boolean>>,handleAlertOpen:(message:string,type:string)=>void)=>{
+    try{
+        setIsLoading(true)
+        await axios.post(`${url}/auth/get_user_details`,{},{
+            headers:{
+                Authorization:`Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
+        .then((res)=>{
+            setIsLoading(false)
+            setData(res.data)
         })
     }
     catch(error:any){

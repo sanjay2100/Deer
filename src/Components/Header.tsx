@@ -49,7 +49,7 @@ const Header = () => {
     
 
     return (
-        <Grid container>
+        <Grid container sx={{position:'sticky',top:'0px',left:"0px"}}>
             <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                 <Box sx={headerBox}>
                     <Grid container justifyContent='space-between' alignItems='center'>

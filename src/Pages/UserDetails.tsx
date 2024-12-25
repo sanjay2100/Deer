@@ -27,7 +27,7 @@ const formBox = {
     borderRadius: '10px',
     backgroundColor: '#fff',
     padding: "20px",
-    marginTop: "-30vh",
+    marginTop: "-22%",
     boxShadow: '0 0 10px'
 }
 
@@ -87,7 +87,7 @@ export const UserDetails = ({ }: Props) => {
         if(Otp!==""&&Otp.length===6){
             VerifyEmailOtp(setLoading,{email:email,otp:Otp},handleAlertOpen,handleOtpDialogClose,setOtpVerified)
         }
-        else{   
+        else{    
             handleAlertOpen("Please enter OTP","error")
         }
     }
@@ -95,10 +95,14 @@ export const UserDetails = ({ }: Props) => {
 
     const onSubmit = (data: any) => {
         console.log(data);
+        if(OtpVerified){
+            handlePostUserDetails(location.state.productId, data, setLoading, handleAlertOpen, Nav)
+        }
+        else{
+            handleAlertOpen("Please verify your email","error")
+        }
 
-        handlePostUserDetails(location.state.productId, data, setLoading, handleAlertOpen, Nav)
-
-    }
+    } 
 
     const [PostData, setPostData] = useState({
         name: "",
@@ -125,6 +129,7 @@ export const UserDetails = ({ }: Props) => {
             handleAlertOpen("Please enter a valid email address","error")
             return
         }
+        
         else{
             VerifyEmail(setLoading,email,handleAlertOpen,handleOpenOtpDialog)
         }
@@ -222,7 +227,7 @@ export const UserDetails = ({ }: Props) => {
                                         <Select
                                             labelId="demo-simple-select-label"
                                             size='small'
-                                            {...register("state", { required: "satet is required" })}
+                                            {...register("state", { required: "state is required" })}
                                             onChange={(e) => handleChange("state", e.target.value)}
                                             sx={{ backgroundColor: '#fff' }}
                                             error={errors.state ? true : false}

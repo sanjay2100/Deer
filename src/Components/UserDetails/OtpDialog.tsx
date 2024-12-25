@@ -38,7 +38,7 @@ export default function OtpDialog(props:propType) {
           <Typography variant='h5' sx={{fontSize:'18px'}}>Enter otp recieved in your mail</Typography>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description" sx={{display:'flex',justifyContent:"center"}}> 
+          <DialogContentText id="alert-dialog-description" sx={{display:'flex',justifyContent:"center",marginBlock:3}}> 
                 <OTPInput otp={props.otp} setOtp={props.setOtp}/>
           </DialogContentText>
         </DialogContent>
