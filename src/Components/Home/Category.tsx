@@ -34,9 +34,9 @@ const Category = (props: Props) => {
           //     <Avatar sx={{ width: 100, height: 100 }} alt={"null"} src={arrayBufferToBlobUrl(item.image, 'image/jpeg')} />
           //     <Typography variant="h6">{item.name}</Typography>
           // </Stack>
-          <Grid item xl={1.5} lg={1.5} md={2} xs={2} key={index} display="flex" flexDirection="column" alignItems="center" justifyContent="center" onClick={() => Nav(`/categories/${item._id}`)}>
+          <Grid item xl={1.5} lg={1.5} md={2} xs={2} key={index} display="flex" flexDirection="column" alignItems="center" justifyContent="center"  onClick={() => Nav(`/categories/${item._id}`)}>
             <Box sx={{
-              borderRadius: '100%',
+              borderRadius: '10px',
               width: '50%',
               background: `url(${url}/image/${item.image[0].filename})`,
               backgroundSize: 'cover',

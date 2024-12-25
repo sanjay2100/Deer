@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Box, Grid, Stack } from '@mui/material'
 import React, { useState } from 'react'
 import Header from '../Components/Header'
 import DeliveryDetails from '../Components/Checkout/DeliveryDetails'
@@ -10,7 +10,9 @@ type Props = {}
 const Checkout=({}: Props)=> {
     const location=useLocation()
     const [CheckOutDetails,setCheckOutDetails]=useState<any>({
-        mode_of_payment:"METHOD1"
+        mode_of_payment:"METHOD1",
+        orders:[],
+        total:0
     })
 
     const handleChangeCheckoutDetails=(field:string,value:string)=>{
@@ -28,7 +30,11 @@ const Checkout=({}: Props)=> {
             <DeliveryDetails mode_of_payment={CheckOutDetails.mode_of_payment} setChechoutDetails={setCheckOutDetails} handleChangeCheckoutDetails={handleChangeCheckoutDetails}/>
         </Grid>
         <Grid item md={6}>
-            <ProductSummary productId={location.state.productId}/>
+            <Stack>
+                <Box sx={{height:'95vh',borderBottom:'1px solid #d9d7d0',overflowY:'scroll'}}>
+                    <ProductSummary productId={location.state.productId} CheckOutDetails={CheckOutDetails} setCheckOutDetails={setCheckOutDetails}/>
+                </Box>
+            </Stack>
         </Grid>
     </Grid>
   )
