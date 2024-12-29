@@ -7,7 +7,8 @@ import { GetAllProductWithList } from '../../Api/CheckoutApis'
 type Props = {
     productId: [string],
     setCheckOutDetails:React.Dispatch<SetStateAction<any>>,
-    CheckOutDetails:any
+    CheckOutDetails:any,
+    handleSubmit:()=>void
 }
 
 const ProductSummary = (props: Props) => {
@@ -33,29 +34,37 @@ const ProductSummary = (props: Props) => {
         GetAllProductWithList({ product_ids: props.productId }, setIsLoading, handleAlertOpen, setProductDetails)
     }, [])
     
-    useEffect(()=>{
-        if(ProductDetails && Array.isArray(ProductDetails.products)){
+    useEffect(() => {
+        if (ProductDetails && Array.isArray(ProductDetails.products)) {
             const newOrders = ProductDetails.products.map((item:any) => ({
                 productid: item._id,
                 quantity: 1,
                 price: item.price
             }));
-
-            console.log(newOrders);
-            
-
-            props.setCheckOutDetails((prevState:any) => ({
-                ...prevState,
-                orders: [...prevState.orders, ...newOrders]
-            }));            
+    
+            props.setCheckOutDetails((prevState:any) => {
+                const existingProductIds = prevState.orders.map((order:any) => order.productid);
+                const filteredNewOrders = newOrders.filter((order:any) => !existingProductIds.includes(order.productid));
+    
+                if (filteredNewOrders.length === 0) {
+                    return prevState;
+                }
+    
+                return {
+                    ...prevState,
+                    orders: [...prevState.orders, ...filteredNewOrders]
+                };
+            });
         }
-    },[ProductDetails])
+    }, [ProductDetails]);
+    
 
     console.log("Postdetails",props.CheckOutDetails);
 
     const handleQuantityChange=(index:number,value:string)=>{
         let modifiedorder=[...props.CheckOutDetails.orders]
         modifiedorder[index].quantity=value
+        modifiedorder[index].total=eval(value)
         props.setCheckOutDetails({...props.CheckOutDetails,orders:modifiedorder})
     }
 
@@ -152,7 +161,7 @@ const ProductSummary = (props: Props) => {
                                     <td style={{color:"#eb4917"}}>₹ {GetSubTotal()+200}</td>
                                 </tr>
                             </table>
-                            <Button  variant='contained' sx={{borderRadius:'10px',backgroundColor:"#252525",mt:2}} fullWidth>Order Now</Button>
+                            <Button  variant='contained' sx={{borderRadius:'10px',backgroundColor:"#252525",mt:2}} fullWidth onClick={props.handleSubmit}>Order Now</Button>
                         </Grid>
                     </Grid>
 

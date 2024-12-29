@@ -1,40 +1,70 @@
 // import React from "react";
 // import Slider from "react-slick";
 import { Box, Stack, Typography } from "@mui/material";
-import image1 from "../../assets/images/listeningmusic.avif"
-import image2 from "../../assets/images/fashion.jpg"
-import image3 from "../../assets/images/furniture.jpg"
-import imageabstract from "../../assets/images/abstractbg3.jpg"
+
+import imageabstract from "../../assets/images/file.png"
+import { useEffect, useState } from "react";
+import zIndex from "@mui/material/styles/zIndex";
 
 
 
 
 export default function SimpleSlider() {
 
+  const string="Quality At Your Doorstep"
+
+  const[index,setIndex]=useState(0);
+  const [zIndex, setZIndex] = useState(0);
+
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      if(index<=string.length){
+        setIndex((prevState)=>prevState+1)
+      }
+    },50)
+    
+  })
+
+ console.log(window.scrollY);
+
+ const updateZIndex = () => {
+  setZIndex(window.scrollY > 150 ? -1 : 0);
+};
+
+useEffect(() => {
+  window.addEventListener('scroll', updateZIndex);
+  updateZIndex(); // Initial call
+
+  return () => {
+    window.removeEventListener('scroll', updateZIndex);
+  };
+}, []);
  
   
   return (
-    <Box height="80vh" sx={{overflow:'hidden',
+    <Box height="85vh" sx={{overflow:'hidden',
     display:'flex',
     justifyContent:'space-between',
     backgroundImage:`url(${imageabstract})`,
-    backgroundColor:"#8f8f8f",
-    backgroundBlendMode:'multiply',m:5,borderRadius:'20px',
+    backgroundColor:index<string.length?"whitesmoke":"whitesmoke",
+    backgroundBlendMode:"inherit",
     mb:5,
     filter:'blur(100%)',
-    backgroundSize:'cover',
+    backgroundSize:window.innerWidth>600?'cover':'cover',
+    backgroundAttachment:"fixed",
+    backgroundPosition:window.innerWidth>600?"start":"center",
     backgroundRepeat:'no-repeat',
     transformOrigin: 'center',
+    transitionDuration:'1s',
+    zIndex:-1
     }}>
-        <Box paddingInline={5} width="60%">
-            <Stack height="100%" justifyContent="center">
-            <Typography variant="h1" sx={{fontWeight:500,color:"#fff",fontFamily:"Poppins, sans-serif"}}>Quality at Your Doorstep</Typography>
-            <Typography variant="h4" sx={{color:"#fff",fontFamily:"Poppins, sans-serif",padding:'5px',borderRadius:'10px'}}>Shop with Confidence</Typography>
+        <Box paddingInline={5} width={"100%"}>
+            <Stack height="100%" justifyContent="flex-start" alignItems="center" direction="row">
+            <Typography variant={"h2"} sx={{textAlign:window.innerWidth<600?"center":"center",fontWeight:500,color:window.innerWidth<600?"#fff":"#000",fontFamily:"Poppins, sans-serif",position:'fixed',opacity:zIndex>=0?"100%":"0%",transitionDuration:'200ms',filter:window.innerWidth<600? "drop-shadow(5px 5px 10px #252525)":"none"}}>{string.substring(0,index)}</Typography>
             </Stack>
         </Box>
-        <Box padding={5} width="40%" sx={{display:window.innerWidth>800?'flex':'none'}}>
-            
-        </Box>
+        
     </Box>
   );
 }

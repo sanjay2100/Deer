@@ -22,34 +22,34 @@ interface AppProps{
 const AppDrawer:React.FC<AppProps>=(Props:AppProps)=>{
 
   return(
-    <Grid container sx={{height:'100vh',backgroundColor:'whitesmoke'}}>
-      <Grid item xl={2} lg={2} md={2}  sx={{backgroundColor:"whitesmoke",height:'100%'}}>
+    <Grid container sx={{height:'100vh',backgroundColor:'#252525'}}>
+      <Grid item xl={2} lg={2} md={2}  sx={{backgroundColor:"#252525",height:'100%'}}>
           <Stack>
             <Box sx={{padding:'20px',display:'flex',justifyContent:'flex-start',alignItems:'center'}}>
-              <Typography sx={{fontWeight:650,fontSize:'21px'}}>EZCart</Typography>
+              <Typography sx={{fontWeight:650,fontSize:'21px',color:"#fff"}}>EZCart</Typography>
             </Box>
-            <Stack sx={{paddingInline:'8px',borderRadius:"10px"}} gap={1}>
+            <Stack sx={{paddingInline:'8px',borderRadius:"10px"}} mt={2} gap={1}>
               {Props.menu.map((item,index)=>(
                 <Box
                   key={index}
                   onClick={()=>Props.setSelected(item.menu)}
-                  sx={{padding:'10px',cursor:'pointer',
-                  backgroundColor:`${Props.selected===item.menu?"#fff":"whitesmoke"}`,color:Props.selected===item.menu?'#000':"#000",borderRadius:'8px',
+                  sx={{padding:'20px',cursor:'pointer',
+                  backgroundColor:`${Props.selected===item.menu?"#fff":"#252525"}`,color:Props.selected===item.menu?'#000':"#fff",borderRadius:'8px',
                   border:Props.selected===item.menu?'0.5px solid #edebe4':"none",
                   display:item.access.includes(sessionStorage.getItem("role") as string)?'flex':'none'
                 }}
                 >
                   <Stack direction="row" gap={1} alignItems="center">
-                  <Box>{item.icon}</Box>
-                  <Typography sx={{fontWeight:500,fontSize:'14px'}}>{item.menu}</Typography>
+                  <Box sx={{fontSize:'20px'}}>{item.icon}</Box>
+                  <Typography sx={{fontWeight:500,fontSize:'20px'}}>{item.menu}</Typography>
                   </Stack>
                 </Box>
               ))}
             </Stack>
           </Stack>
       </Grid>
-      <Grid item xl={10} lg={10} md={10} sx={{height:'100vh',backgroundColor:'whitesmoke'}}>
-        <Grid container height="8%" justifyContent="center" alignItems="center" sx={{backgroundColor:'whitesmoke'}}>
+      <Grid item xl={10} lg={10} md={10} sx={{height:'100vh',backgroundColor:'#252525'}}>
+        <Grid container height="8%" justifyContent="center" alignItems="center" sx={{backgroundColor:'#252525'}}>
           <Grid item md={12} xs={12}>
             <Stack justifyContent="center" alignItems="center" sx={{paddingInline:'15px',alignItems:'flex-end'}}>
               <Avatar>N</Avatar>

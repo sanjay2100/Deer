@@ -35,33 +35,35 @@ const Header = () => {
 
 
     const headerBox = {
-        paddingBlock: "15px",
+        paddingBlock: "10px",
         paddingInline: "10px",
-        background:"#fff",
+        background:"#100a5c",
         borderBottom:'0.8px solid #d9d7d0'
     }
     
     const Icons = {
-        fontSize: "22px",
-        color:"#252525",
+        fontSize: "20px",
+        color:"#fff",
         cursor: 'pointer',
     }
     
 
     return (
-        <Grid container sx={{position:'sticky',top:'0px',left:"0px"}}>
+        <Grid container sx={{position:'sticky',top:'0px',left:"0px",zIndex:2}}>
             <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
                 <Box sx={headerBox}>
                     <Grid container justifyContent='space-between' alignItems='center'>
                         <Grid item xl={2} onClick={()=>Nav("/home")}>
-                            <Typography variant="h5" sx={{ color:"#252525", fontWeight: 600 }}>EZCart</Typography>
+                            <Typography variant="h5" sx={{ color:"#fff", fontWeight: 600 }}>EZCart</Typography>
                         </Grid>
-                        <Grid item xl={4}>
+                        <Grid item md={6} xs={0}>
                             <TextField
                                 size="small"
                                 fullWidth
                                 placeholder="search"
+                                
                                 sx={{
+                                    display:window.innerWidth<600?'none':'flex',
                                     input: {
                                         background: "#fff",
                                         borderRadius: '5px'

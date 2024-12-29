@@ -18,7 +18,9 @@ type menuProp={
     { menu: "Add product", icon: <BiSolidAddToQueue /> ,access:["vendor"]},
     { menu: "My products", icon: <FaClipboardList />,access:["vendor"] },
     { menu: "Orders", icon: <FaCartShopping />,access:["vendor"] },
-    { menu: "Add Category", icon: <BiSolidCategory />,access:["Admin"] }
+    { menu: "Add Category", icon: <BiSolidCategory />,access:["Admin"] },
+    { menu: "My Orders", icon: <FaCartShopping />,access:["user"] },
+
   ];
   const [selected,setSelected]=useState<null|string>("Dashboard")
   return (

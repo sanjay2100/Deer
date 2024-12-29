@@ -5,7 +5,7 @@ import BackdropLoader from '../Loader'
 import AlertSnackBar from '../Alert'
 
 type Props = {
-    mode_of_payment:string,
+    paymentmethod:string,
     setChechoutDetails:React.Dispatch<SetStateAction<object>>,
     handleChangeCheckoutDetails:(field:string,value:string)=>void
 }
@@ -34,33 +34,33 @@ const DeliveryDetails=(props: Props)=> {
     },[])
 
   return (
-    <Grid container sx={{borderRight:'1px solid #d9d7d0',minHeight:'95vh'}}>
+    <Grid container padding={10} sx={{borderRight:'1px solid #d9d7d0',height:'100%'}}>
         <BackdropLoader open={IsLoading}/>
         <AlertSnackBar open={AlertOpen} message={AlertMessage} severity={AlertType} handleClose={handleAlertClose}/>
-        <Grid item xs={12} padding={10}>
-            <Stack>
+        <Grid item xs={12}  height="100%">
+            <Stack   justifyContent="space-between" height="100%">
                 <Grid item xs={12}>
                     <Typography variant='h5' color="#eb4917" sx={{fontWeight:500}}>Checkout</Typography>
                 </Grid>
-                <Grid item xs={12} mt={2}>
+                <Grid item xs={12}>
                     <Typography variant='body1' sx={{fontWeight:400}}>Payment option</Typography>
                 </Grid>
-                <Grid item xs={12} mt={3}>
+                <Grid item xs={12}>
                     <Grid container justifyContent="space-between">
                         <Grid item xs={5.5}>
                             <Button 
                                 variant='outlined' 
                                 fullWidth
-                                sx={{color:props.mode_of_payment==='METHOD1'?'#eb4917':"inherit",borderColor:props.mode_of_payment==='METHOD1'?'#eb4917':"inherit"}}
-                                onClick={()=>props.handleChangeCheckoutDetails("mode_of_payment","METHOD1")}
+                                sx={{color:props.paymentmethod==='METHOD1'?'#eb4917':"inherit",borderColor:props.paymentmethod==='METHOD1'?'#eb4917':"inherit"}}
+                                onClick={()=>props.handleChangeCheckoutDetails("paymentmethod","METHOD1")}
                                 >Pay now</Button>
                         </Grid>
                         <Grid item xs={5.5}>
                         <Button 
                             variant='outlined'
                             fullWidth
-                            sx={{color:props.mode_of_payment==='METHOD2'?'#eb4917':"#252525",borderColor:props.mode_of_payment==='METHOD2'?'#eb4917':"inherit"}}
-                            onClick={()=>props.handleChangeCheckoutDetails("mode_of_payment","METHOD2")}
+                            sx={{color:props.paymentmethod==='METHOD2'?'#eb4917':"#252525",borderColor:props.paymentmethod==='METHOD2'?'#eb4917':"inherit"}}
+                            onClick={()=>props.handleChangeCheckoutDetails("paymentmethod","METHOD2")}
 
                             >Cash on Delivery</Button>
 
@@ -68,11 +68,11 @@ const DeliveryDetails=(props: Props)=> {
                     </Grid>
                 </Grid>
 
-                <Grid item xs={12} mt={4}>
+                <Grid mt={2} item xs={12} >
                     <Typography variant='body1' sx={{fontWeight:400}}>Shipping details</Typography>
                 </Grid>
 
-                <Grid item xs={12} mt={4} sx={{display:'flex',flexDirection:'column',gap:1}}>
+                <Grid mt={2} item xs={12} sx={{display:'flex',flexDirection:'column',gap:1}}>
                     <Typography variant='body2' sx={{fontWeight:400}}>Name</Typography>
                     <TextField
                         size='small'
@@ -82,7 +82,7 @@ const DeliveryDetails=(props: Props)=> {
                     />
                 </Grid>
 
-                <Grid item xs={12} mt={4} sx={{display:'flex',flexDirection:'column',gap:1}}>
+                <Grid item xs={12} mt={4}  sx={{display:'flex',flexDirection:'column',gap:1}}>
                     <Typography variant='body2' sx={{fontWeight:400}}>Mobile Number</Typography>
                     <TextField
                         size='small'
@@ -92,7 +92,7 @@ const DeliveryDetails=(props: Props)=> {
                     />
                 </Grid>
 
-                <Grid item xs={12} mt={4} sx={{display:'flex',flexDirection:'column',gap:1}}>
+                <Grid item xs={12} mt={4}  sx={{display:'flex',flexDirection:'column',gap:1}}>
                     <Typography variant='body2' sx={{fontWeight:400}}>Address</Typography>
                     <TextField
                         multiline
@@ -105,9 +105,9 @@ const DeliveryDetails=(props: Props)=> {
                     />
                 </Grid>
 
-                <Grid container justifyContent="space-between" spacing={1}>
+                <Grid mt={4} container justifyContent="space-between" spacing={1}>
 
-                <Grid item md={6} xs={12} mt={4} sx={{display:'flex',flexDirection:'column',gap:1}}>
+                <Grid item md={6} xs={12}  sx={{display:'flex',flexDirection:'column',gap:1}}>
                     <Typography variant='body2' sx={{fontWeight:400}}>state</Typography>
                     <TextField   
                         size='small'
@@ -117,7 +117,7 @@ const DeliveryDetails=(props: Props)=> {
                     />
                 </Grid>
 
-                <Grid item md={6} xs={12} mt={4} sx={{display:'flex',flexDirection:'column',gap:1}}>
+                <Grid item md={6} xs={12}  sx={{display:'flex',flexDirection:'column',gap:1}}>
                     <Typography variant='body2' sx={{fontWeight:400}}>District</Typography>
                     <TextField
                         value={UserDetails&&UserDetails.district?UserDetails.district:""}
@@ -128,7 +128,7 @@ const DeliveryDetails=(props: Props)=> {
                 </Grid>
                 </Grid>
 
-                <Grid item md={6} xs={12} mt={4} sx={{display:'flex',flexDirection:'column',gap:1}}>
+                <Grid item mt={4} md={6} xs={12}  sx={{display:'flex',flexDirection:'column',gap:1}}>
                     <Typography variant='body2' sx={{fontWeight:400}}>Pincode</Typography>
                     <TextField
                         size='small'

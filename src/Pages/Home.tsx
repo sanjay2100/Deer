@@ -9,14 +9,17 @@ import BackdropLoader from '../Components/Loader'
 import AlertSnackBar from '../Components/Alert'
 import { useDispatch } from 'react-redux'
 import NewArraivals from '../Components/Home/NewArraivals'
-import { getNewArrivals } from '../Api/Products'
+import { getNewArrivals, getTopSelling } from '../Api/Products'
 import AdBanner from '../Components/Home/AdBanner'
+import TopSelling from '../Components/Home/TopSelling'
+import Footer from '../Components/Home/Footer'
 
 type Props = {}
 
  const Home=({}: Props)=> {
   const [CategoryData,setCategories]=useState<null|any[]>(null)
   const[Arraivals,setNewArrivals]=useState<null|any[]>(null)
+  const[TopSellingProducts,setTopSellingProducts]=useState<null|any>(null)
   const [isLoading,setIsLoading]=useState<boolean>(false)
   const [AlertMessgae,setAlertMessgae]=useState<string|null>(null)
   const [OpenAlert,setOpenAlert]=useState<boolean>(false)
@@ -37,6 +40,7 @@ type Props = {}
   useEffect(()=>{
       GetCategories(setIsLoading,setCategories,handleOpenAlert,dispatch)
       getNewArrivals(setIsLoading,setNewArrivals,handleOpenAlert)
+      getTopSelling(setIsLoading,setTopSellingProducts,handleOpenAlert)
   },[])
   return (
     <Stack>
@@ -47,6 +51,8 @@ type Props = {}
         <Category menues={CategoryData}/>
         <NewArraivals data={Arraivals}/>
         <AdBanner/>
+        <TopSelling data={TopSellingProducts?TopSellingProducts.products:[]}/>
+        <Footer/>
     </Stack>
   )
 }

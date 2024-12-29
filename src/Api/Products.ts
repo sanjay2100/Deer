@@ -66,3 +66,21 @@ export const getNewArrivals=async(setIsLoading:React.Dispatch<SetStateAction<boo
         handleErrorOpen(error.response?error.response.data.message:"Something went wrong","error") 
     }
 }
+
+export const getTopSelling=async(setIsLoading:React.Dispatch<SetStateAction<boolean>>,setData:React.Dispatch<SetStateAction<any>>,handleErrorOpen:(type:string,message:string)=>void)=>{
+    try {
+        setIsLoading(true)
+        await axios.get(`${url}/product/get_max_selling_products`,{
+            headers:{
+                Authorization:`Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
+        .then((res)=>{
+            setIsLoading(false)
+            setData(res.data)
+        })
+    } catch (error:any) {
+        setIsLoading(false)
+        handleErrorOpen(error.response?error.response.data.message:"Something went wrong","error") 
+    }
+}

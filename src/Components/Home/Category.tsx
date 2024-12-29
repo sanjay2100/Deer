@@ -37,7 +37,7 @@ const Category = (props: Props) => {
           <Grid item xl={1.5} lg={1.5} md={2} xs={2} key={index} display="flex" flexDirection="column" alignItems="center" justifyContent="center"  onClick={() => Nav(`/categories/${item._id}`)}>
             <Box sx={{
               borderRadius: '10px',
-              width: '50%',
+              width:window.innerWidth<600?'100%': '50%',
               background: `url(${url}/image/${item.image[0].filename})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
