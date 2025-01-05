@@ -5,6 +5,7 @@ import DataTable from "./sub_components/All_Products";
 import Add_Product from "./sub_components/Add_Product";
 import Add_Category from "./sub_components/Add_category";
 import Dashboard from "./sub_components/Dashboard";
+import Orders from "./sub_components/Orders";
 
 
 type menuProp={
@@ -71,6 +72,9 @@ const AppDrawer:React.FC<AppProps>=(Props:AppProps)=>{
                 :
                 Props.selected==="Dashboard"?
                   <Dashboard/>
+                :
+                Props.selected==="Orders"?
+                  <Orders/>
                 :
                 null
               }

@@ -88,3 +88,21 @@ export const GetUserProduct=async(setData:React.Dispatch<SetStateAction<postProd
         handleAlertOpen(error.response?error.response.data.message:"Something went wrong","error")
     }
 }
+
+export const GetVendorOrders=async(setData:React.Dispatch<SetStateAction<any>>,setIsLoading:React.Dispatch<SetStateAction<boolean>>,handleAlertOpen:(message:string,type:string)=>void)=>{
+    try{
+        await axios.get(`${url}/order/get_vendor_orders`,{
+            headers:{
+                Authorization:`Bearer ${sessionStorage.getItem("token")}`
+            }
+        })
+        .then((res)=>{
+            setIsLoading(false)
+            setData(res.data)
+        })
+    }
+    catch(error:any){
+        setIsLoading(false)
+        handleAlertOpen(error.response?error.response.data.message:"Something went wrong","error")
+    }
+}

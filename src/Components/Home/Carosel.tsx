@@ -61,7 +61,7 @@ useEffect(() => {
     }}>
         <Box paddingInline={5} width={"100%"}>
             <Stack height="100%" justifyContent="flex-start" alignItems="center" direction="row">
-            <Typography variant={"h2"} sx={{textAlign:window.innerWidth<600?"center":"center",fontWeight:500,color:window.innerWidth<600?"#fff":"#000",fontFamily:"Poppins, sans-serif",position:'fixed',opacity:zIndex>=0?"100%":"0%",transitionDuration:'200ms',filter:window.innerWidth<600? "drop-shadow(5px 5px 10px #252525)":"none"}}>{string.substring(0,index)}</Typography>
+            <Typography variant={"h2"} sx={{textAlign:window.innerWidth<600?"center":"center",fontWeight:500,color:window.innerWidth<600?"#000":"#000",fontFamily:"Poppins, sans-serif",position:'fixed',opacity:zIndex>=0?"100%":"0%",transitionDuration:'200ms',filter:window.innerWidth<600? "drop-shadow(5px 5px 10px #fff)":"drop-shadow(5px 5px 10px #fff)"}}>{string.substring(0,index)}</Typography>
             </Stack>
         </Box>
         
